@@ -6,7 +6,7 @@
 /*   By: abrar <abrar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 18:19:23 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/01/12 09:29:16 by abrar            ###   ########.fr       */
+/*   Updated: 2022/01/16 13:09:19 by abrar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define BMAG "\e[1;35m"
 # define BCYN "\e[1;36m"
 # define BWHT "\e[1;37m"
-# define HUND_CHUNK 8
-# define FIHUND_CHUNK 16
+# define HUND_CHUNK 4
+# define FIHUND_CHUNK 8
 
 typedef struct s_struct
 {
@@ -51,6 +51,7 @@ typedef struct s_stack
     int top_b;
     int ele_tot;
     int median;
+    int mark_bottom;
     int top_small_a;
     t_range r;
     int range_size;
@@ -95,4 +96,5 @@ void    printArray(int arr[], int size); //dele
 void    part_a(t_stack *st);
 void    part_b(t_stack *st);
 void    three_algoo(t_stack *st);
+void    check_to_swap(t_stack *st);
 #endif

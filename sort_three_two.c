@@ -45,8 +45,8 @@ void    three_algo(t_stack *st)
 
 void    two_algo(t_stack *st)
 {
-    if(st->stack_a[st->top_a] < st->stack_a[0])
-        ft_putstr_fd(BMAG "Already sorted", 1);
+    // if(st->stack_a[st->top_a] < st->stack_a[0])
+    //     ft_putstr_fd(BMAG "Already sorted", 1);
     if(st->stack_a[st->top_a] > st->stack_a[0])
         swap_a(st);
 }

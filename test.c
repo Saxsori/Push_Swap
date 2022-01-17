@@ -45,7 +45,7 @@ void printArray(int arr[], int size)
     for (i = 0; i < size; i++) 
         {
             ft_putnbr_fd(arr[i], 1);
-            ft_putchar_fd(',', 1);
+            ft_putchar_fd(' ', 1);
         }
     // ft_putchar_fd('a', 1);
 }
@@ -129,3 +129,88 @@ int main ()
 
 }
 
+
+/////////////////////////////////////////////////////////////
+
+static int  scan_top_a(t_stack *st)
+{
+    int i;
+
+    i = st->top_a;
+    while (i >= 0 && st->stack_a[i] < st->stack_b[st->top_b])
+        i--;
+    return (st->top_a - (i + 1));
+}
+
+static int  scanـstack_b(t_stack *st)
+{
+    int i;
+
+    i = st->top_b;
+    while (i >= 0)
+    {
+        if (st->stack_a[0] < st->stack_b[i])
+            return(0);
+            i--;
+    }
+    return(1);
+}
+
+void    check_stack_a(t_stack *st)
+{
+    int small_num;
+    int i;
+
+    i = 0;
+    small_num = scan_top_a(st);
+    if (st->stack_a[0] == st->mark_bottom || st->stack_b[st->top_b] > st->stack_a[0])
+    {
+    while (i <= small_num && st->stack_a[st->top_a] < st->stack_b[st->top_b])
+    {
+        rot_a(st);
+        i++;
+    }
+    }
+    if (st->stack_b[st->top_b] < st->stack_a[st->top_a] && st->stack_b[st->top_b] > st->stack_a[0])
+    {
+        push_a(st);
+        while (st->stack_a[0] < st->stack_a[st->top_a] && scanـstack_b(st))
+        {
+            revrot_a(st);
+        }
+    }
+
+    // i = 0;
+    // if (st->stack_a[0] != st->mark_bottom)
+    // {
+    // while (i <= small_num && scanـstack_b(st))
+    // {
+    //     // if (scanـstack_b(st) && st->stack_a[0] < st->stack_a[st->top_a])
+    //         revrot_a(st);
+    //     i++;
+    // }
+    // }
+}
+
+void    check_push_to_a(t_stack *st)
+{
+    if (st->stack_a[st->top_a] > st->stack_b[st->top_b])
+        push_a(st);
+    else
+        check_stack_a(st);
+}
+
+void    part_b(t_stack *st)
+{
+    int i;
+    int uu;
+
+    i = 0;
+    uu = st->top_a;
+    st->mark_bottom = st->stack_a[0];
+    while (i < st->ele_tot && st->top_b > -1)
+    {
+        check_push_to_a(st);
+        i++; 
+    }
+}

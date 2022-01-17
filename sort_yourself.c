@@ -6,7 +6,7 @@ void printArray(int arr[], int size)
     for (i = 0; i < size; i++) 
         {
             ft_putnbr_fd(arr[i], 1);
-            ft_putchar_fd(',', 1);
+            ft_putchar_fd(' ', 1);
         }
 }
 

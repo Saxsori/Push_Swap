@@ -69,11 +69,18 @@ void    mark_chunks_b(t_stack *st)
     i++;
 }
 
-void    find_tools(t_stack *st)
+void    find_tools(t_stack *st, int t)
 {
-    find_median(st);
-    // sizeof_range(st);
-    // mark_chunks_b(st);
+    int m;
+
+    if (t == 1)
+        find_median(st);
+    else if (t == 2)
+    {
+        m = st->doo.total_yourself / 2;
+        st->range_size = m + 1;
+        st->median = st->doo.array_yourself[m];
+    }
 }
 
 int limit_calc(t_stack *st)
@@ -91,10 +98,8 @@ int limit_calc(t_stack *st)
  void    algo(t_stack *st)
 {
     int i;
-    
+
     i = 0;
-    find_tools(st);
-    // ft_putnbr_fd(st->median, 1);
     while (initial_check_a(st) && i < st->range_size)
     {
         if (st->stack_a[st->top_a] <= st->median)
@@ -114,11 +119,18 @@ int limit_calc(t_stack *st)
 
  void    apply_small_algo_a(t_stack *st)
 {
-        if (st->top_a + 1 == 5 || st->top_a + 1 == 4)
-            small_algo(st);
-        if (st->top_a + 1 == 3)
-            three_algoo(st);
-        // free_yourself(st);
+    if (st->top_a > 4)
+    {
+        fix_yourself(st);
+        find_tools(st, 2);
+        algo (st);
+        free_yourself(st);
+    }
+    if (st->top_a + 1 == 5 || st->top_a + 1 == 4)
+        small_algo(st);
+    if (st->top_a + 1 == 3)
+        three_algoo(st);
+    // free_yourself(st);
 }
 
 void    part_a(t_stack *st)
@@ -127,15 +139,11 @@ void    part_a(t_stack *st)
     
     j = 0;
     st->limit = limit_calc(st);
-    // st->mark_chunk = (int *)malloc(st->limit - 1 * sizeof(int));
     while (j < st->limit && st->top_a > 4)
     {
         fix_yourself(st);
+        find_tools(st, 1);
         algo(st);
-        // mark_chunks_b(st);
-    // ft_putnbr_fd(st->top_b, 1);
-    // ft_putnbr_fd(st->stack_b[st->top_b], 1);
-    // ft_putnbr_fd(st->mark_chunk[j], 1);
         free_yourself(st);
         j++;
     }
@@ -148,11 +156,15 @@ void    big_algo(t_stack *st)
     part_b(st);
 }
 
-            // free_yourself(st);
 
-        // fix_yourself(st);
-    //     j++;
-    // }
+
+
+    // st->mark_chunk = (int *)malloc(st->limit - 1 * sizeof(int));
+
+        // mark_chunks_b(st);
+    // ft_putnbr_fd(st->top_b, 1);
+    // ft_putnbr_fd(st->stack_b[st->top_b], 1);
+    // ft_putnbr_fd(st->mark_chunk[j], 1);
     // check (st)
     // ft_putnbr_fd(st->range_size, 1);
     // ft_putnbr_fd(999, 1);

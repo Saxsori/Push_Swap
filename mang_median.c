@@ -7,6 +7,11 @@ void    find_median(t_stack *st)
     // if (st->doo.total_yourself % 2)
     //     {
         m = 0;
+            // if (st->ele_tot > 100 && st->top_a >= 5 && st->top_b > -1)
+            // {
+            //     m = st->doo.total_yourself / 2;
+            //     st->range_size = m + 1;
+            // }
             if (st->ele_tot < 500)
             {
                 m = st->doo.total_yourself / HUND_CHUNK; //around 16 for 500 will give 10991 //around 8 for 952
