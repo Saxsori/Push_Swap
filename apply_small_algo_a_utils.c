@@ -1,20 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_three_two.c                                   :+:      :+:    :+:   */
+/*   apply_small_algo_a_utils.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 13:19:47 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/02/03 13:19:52 by aaljaber         ###   ########.fr       */
+/*   Created: 2022/02/03 12:59:57 by aaljaber          #+#    #+#             */
+/*   Updated: 2022/02/03 13:00:47 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* if(st->stack_a[st->top_a - 1] < st->stack_a[0])
-if(st->stack_a[st->top_a] < st->stack_a[0])
-Already sorted*/
+void	doo_ra(t_stack *st)
+{
+	while (--st->g > 2 && st->count_pa != 2)
+	{
+		if (st->stack_a[st->g] > st->median || st->stack_a[st->g] < st->median)
+		{
+			if (st->g == st->top_a)
+				push_b(st);
+			else
+			{
+				rot_a(st);
+				push_b(st);
+			}
+			st->count_pa++;
+		}
+	}
+}
+
+void	doo_rra(t_stack *st)
+{
+	while (--st->g > -1 && st->count_pa != 2)
+	{
+		if (st->stack_a[st->g] > st->median || st->stack_a[st->g] < st->median)
+		{
+			if (st->g == 0)
+			{
+				swap_a(st);
+				push_b(st);
+			}
+			else
+			{
+				rot_a(st);
+				push_b(st);
+			}
+			st->count_pa++;
+		}
+	}
+}
+
 static void	small_topcheck(t_stack *st)
 {
 	if (st->stack_a[st->top_a - 1] > st->stack_a[0])
@@ -45,23 +81,10 @@ static void	big_topcheck(t_stack *st)
 	}
 }
 
-/* There are 6 cases to handle for this algo
-therefore we got 6 conditions in here for sorting 3 numbers
-to organize these 6 conditions, separate them in two conditions
-when top > second else top < second etc...
-the commands i figured them out manually */
-void	three_algo(t_stack *st)
+void	three_algoo(t_stack *st)
 {
 	if (st->stack_a[st->top_a] < st->stack_a[st->top_a - 1])
 		small_topcheck(st);
 	else if (st->stack_a[st->top_a] > st->stack_a[st->top_a - 1])
 		big_topcheck(st);
-}
-
-/*if(st->stack_a[st->top_a] < st->stack_a[0])
-Already sorted*/
-void	two_algo(t_stack *st)
-{
-	if (st->stack_a[st->top_a] > st->stack_a[0])
-		swap_a(st);
 }

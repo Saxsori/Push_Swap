@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:13:45 by aaljaber          #+#    #+#             */
-/*   Updated: 2021/10/13 15:14:01 by aaljaber         ###   ########.fr       */
+/*   Updated: 2022/01/30 16:15:57 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	char	*src1;
 	char	*dst1;
-	size_t	i;
 
 	src1 = (char *) src;
 	dst1 = (char *) dst;
-	i = 0;
 	if (dst == src)
 		return (dst);
 	else if (src1 < dst1)

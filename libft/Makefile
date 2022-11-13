@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+         #
+#    By: aaljaber <aaljaber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 12:10:20 by aaljaber          #+#    #+#              #
-#    Updated: 2021/10/13 12:55:44 by aaljaber         ###   ########.fr        #
+#    Updated: 2022/02/03 15:33:41 by aaljaber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ CFLAGS = -Wall -Werror -Wextra -c
 
 RM = rm -f
 
-.c.o :
-	${CC} ${CFLAGS} -I ${INCS} -c $< -o ${<:.c=.o}
-
+# .c.o :
+# 	${CC} ${CFLAGS} ${INCS}
+	
 ${NAME} :   ${OBJS}
-	ar rc ${NAME} ${OBJS}
+	ar rc ${NAME} ${OBJS} ${INCS}
 
 all : ${NAME}
 

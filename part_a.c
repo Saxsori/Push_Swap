@@ -1,181 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   part_a.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaljaber <aaljaber@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/02 19:25:42 by aaljaber          #+#    #+#             */
+/*   Updated: 2022/02/02 19:55:18 by aaljaber         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static int scan_top_a(t_stack *st)
+void	check_push_to_b(t_stack *st)
 {
-    int i;
+	int	top;
+	int	bottom;
+	int	i;
 
-    i = st->top_a;
-    while (i >= 0 && st->stack_a[i] >= st->median)
-        i--;
-    return (st->top_a - i);
+	i = -1;
+	top = scan_top_a(st);
+	bottom = scan_bottom_a(st);
+	if (initial_check_a(st) && \
+			(bottom >= top || bottom == top - 1) && st->top_a > 1)
+	{
+		while (++i <= top && st->stack_a[st->top_a] > st->median)
+			rot_a(st);
+	}
+	else if (initial_check_a(st) && bottom < top && st->top_a > 1)
+	{
+		i = -1;
+		while (++i <= bottom && st->stack_a[st->top_a] > st->median)
+			revrot_a(st);
+	}
 }
 
-static int scan_bottom_a(t_stack *st)
+int	limit_calc(t_stack *st)
 {
-    int i;
+	int	limit;
 
-    i = 0;
-    while (i <= st->top_a && st->stack_a[i] >= st->median)
-        i++;
-    return(i);
+	if (st->ele_tot < 500)
+		limit = HUND_CHUNK * HUND_CHUNK;
+	if (st->ele_tot > 100)
+		limit = FIHUND_CHUNK * FIHUND_CHUNK + 10;
+	return (limit);
 }
 
-int    initial_check_a(t_stack *st)
+void	algo(t_stack *st)
 {
-    int i;
+	int	i;
 
-    i = st->top_a;
-    while(i-- > 0)
-    {
-        if (st->stack_a[i] <= st->median)
-            return(1);
-    }
-    return(0);
+	i = 0;
+	while (initial_check_a(st) && i < st->range_size)
+	{
+		if (st->stack_a[st->top_a] <= st->median)
+			push_b(st);
+		else
+		{
+			if (initial_check_a(st))
+			{
+				check_push_to_b(st);
+				if (st->stack_a[st->top_a] <= st->median)
+					push_b(st);
+			}
+		}
+		i++;
+	}
 }
 
-void    check_push_to_b(t_stack *st)
+void	part_a(t_stack *st)
 {
-    int top;
-    int bottom;
-    int i;
+	int	j;
 
-    i = 0;
-    top = scan_top_a(st);
-    bottom = scan_bottom_a(st);
-    if (initial_check_a(st) && (bottom >= top || bottom == top - 1) && st->top_a > 4)
-    {
-        while (i <= top && st->stack_a[st->top_a] > st->median)
-            {
-                rot_a(st);
-                i++;
-            }
-    }
-    else if (initial_check_a(st) && bottom < top && st->top_a > 4)
-    {
-    i = 0;
-        while (i <= bottom && st->stack_a[st->top_a] > st->median)
-            {
-                revrot_a(st);
-                i++;
-            }
-    }
+	j = 0;
+	st->limit = limit_calc(st);
+	while (st->top_a > 1 && j < st->limit)
+	{
+		fix_yourself(st, 1);
+		find_tools(st, 1);
+		algo(st);
+		free_yourself(st);
+		j++;
+	}
+	apply_small_algo_a(st);
 }
 
-void    mark_chunks_b(t_stack *st)
+void	big_algo(t_stack *st)
 {
-    static int  i;
-
-    st->mark_chunk[i] = st->top_b;
-    i++;
+	part_a(st);
+	part_b(st);
 }
-
-void    find_tools(t_stack *st, int t)
-{
-    int m;
-
-    if (t == 1)
-        find_median(st);
-    else if (t == 2)
-    {
-        m = st->doo.total_yourself / 2;
-        st->range_size = m + 1;
-        st->median = st->doo.array_yourself[m];
-    }
-}
-
-int limit_calc(t_stack *st)
-{
-    int limit;
-
-    if (st->ele_tot < 500)
-        limit = HUND_CHUNK * HUND_CHUNK;
-    if (st->ele_tot > 100)
-        limit = FIHUND_CHUNK * FIHUND_CHUNK;
-    return (limit);
-}
-
-
- void    algo(t_stack *st)
-{
-    int i;
-
-    i = 0;
-    while (initial_check_a(st) && i < st->range_size)
-    {
-        if (st->stack_a[st->top_a] <= st->median)
-            push_b(st);
-        else
-        {
-            if (initial_check_a(st))
-            {
-                check_push_to_b(st);
-                if (st->stack_a[st->top_a] <= st->median)
-                    push_b(st);
-            }
-        }
-        i++;
-    }
-}
-
- void    apply_small_algo_a(t_stack *st)
-{
-    if (st->top_a > 4)
-    {
-        fix_yourself(st);
-        find_tools(st, 2);
-        algo (st);
-        free_yourself(st);
-    }
-    if (st->top_a + 1 == 5 || st->top_a + 1 == 4)
-        small_algo(st);
-    if (st->top_a + 1 == 3)
-        three_algoo(st);
-    // free_yourself(st);
-}
-
-void    part_a(t_stack *st)
-{
-    int j;
-    
-    j = 0;
-    st->limit = limit_calc(st);
-    while (j < st->limit && st->top_a > 4)
-    {
-        fix_yourself(st);
-        find_tools(st, 1);
-        algo(st);
-        free_yourself(st);
-        j++;
-    }
-    apply_small_algo_a(st);
-}
-
-void    big_algo(t_stack *st)
-{
-    part_a(st);
-    part_b(st);
-}
-
-
-
-
-    // st->mark_chunk = (int *)malloc(st->limit - 1 * sizeof(int));
-
-        // mark_chunks_b(st);
-    // ft_putnbr_fd(st->top_b, 1);
-    // ft_putnbr_fd(st->stack_b[st->top_b], 1);
-    // ft_putnbr_fd(st->mark_chunk[j], 1);
-    // check (st)
-    // ft_putnbr_fd(st->range_size, 1);
-    // ft_putnbr_fd(999, 1);
-    // while (--limit < 0 && )
-
-        // ft_putnbr_fd(st->limit, 1);
-        // st->limit = 3;
-    //     ft_putnbr_fd(st->top_b, 1);
-    //     ft_putchar_fd('\n', 1);
-    // printArray(st->mark_chunk, st->limit);
-        // ft_putnbr_fd(st->stack_b[st->top_b], 1);
-    // ft_putchar_fd('\n', 1);
-    // ft_putnbr_fd(10000000, 1);
-

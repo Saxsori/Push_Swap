@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:07:14 by aaljaber          #+#    #+#             */
-/*   Updated: 2021/10/13 15:07:44 by aaljaber         ###   ########.fr       */
+/*   Updated: 2022/01/30 16:15:29 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	ft_bzero(void *s, size_t n)
 	{
 		j = (char *)ft_memset(s, '\0', n);
 	}
+	return ((void) j);
 }
