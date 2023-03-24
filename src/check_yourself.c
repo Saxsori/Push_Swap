@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_yourself.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:25:30 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/02/02 20:35:51 by aaljaber         ###   ########.fr       */
+/*   Updated: 2023/03/25 01:47:30 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 int	is_sort(t_stack *st)
 {

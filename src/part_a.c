@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   part_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:25:42 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/02/02 19:55:18 by aaljaber         ###   ########.fr       */
+/*   Updated: 2023/03/25 01:47:30 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 void	check_push_to_b(t_stack *st)
 {

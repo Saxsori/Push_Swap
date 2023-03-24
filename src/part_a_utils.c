@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   part_a_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:56:46 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/02/02 19:57:32 by aaljaber         ###   ########.fr       */
+/*   Updated: 2023/03/25 01:47:30 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 void	find_tools(t_stack *st, int t)
 {

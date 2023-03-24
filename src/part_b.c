@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   part_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:25:12 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/02/03 13:02:41 by aaljaber         ###   ########.fr       */
+/*   Updated: 2023/03/25 01:47:30 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 static int	scan_bottomf_a(t_stack *st)
 {

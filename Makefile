@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+         #
+#    By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/03 12:58:59 by aaljaber          #+#    #+#              #
-#    Updated: 2022/02/03 12:59:16 by aaljaber         ###   ########.fr        #
+#    Updated: 2023/03/25 01:55:04 by aaljaber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ./mang_stack.c ./error_free.c ./push_swap.c ./rot.c ./rev.c ./main.c ./sort_three_two.c ./sort_yourself.c ./sort_five_four.c ./mang_median.c ./check_yourself.c ./apply_small_algo_a.c ./part_a.c ./part_b.c ./part_b2.c ./part_a_utils.c ./part_b_utils.c ./part_b2_utils.c ./apply_small_algo_a_utils.c ./sort_five_four_utils.c
+SRC = ./src/mang_stack.c ./src/error_free.c ./src/push_swap.c ./src/rot.c ./src/rev.c ./src/main.c ./src/sort_three_two.c ./src/sort_yourself.c ./src/sort_five_four.c ./src/mang_median.c ./src/check_yourself.c ./src/apply_small_algo_a.c ./src/part_a.c ./src/part_b.c ./src/part_b2.c ./src/part_a_utils.c ./src/part_b_utils.c ./src/part_b2_utils.c ./src/apply_small_algo_a_utils.c ./src/sort_five_four_utils.c
 
 OBJ = ${SRC:.c=.o}
 
@@ -25,19 +25,19 @@ RM = rm -rf
 all : ${NAME}
 
 ${NAME}: ${OBJ}
-		${MAKE} -C ./libft
-		${CC} ${FLAGS} ${SRC} ./libft/libft.a -o ${NAME}
+		${MAKE} -C ./incl/libft
+		${CC} ${FLAGS} ${SRC} ./incl/libft/libft.a -o ${NAME}
 
 clean : 
-		${MAKE} fclean -C ./libft
+		${MAKE} fclean -C ./incl/libft
 		${RM} ${OBJ}
 
 fclean : clean
 		${RM} ${NAME}
 
 re : fclean all
-		cp ./push_swap ./push_swap_tester/push_swap
-		rm ./push_swap_tester/push_swap
-		cp ./push_swap ./push_swap_tester/push_swap
+		cp ./push_swap ./Testers/push_swap_tester/push_swap
+		rm ./Testers/push_swap_tester/push_swap
+		cp ./push_swap ./Testers/push_swap_tester/push_swap
 
 .PHONY : all clean fclean re

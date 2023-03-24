@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mang_median.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:44:33 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/02/03 13:01:53 by aaljaber         ###   ########.fr       */
+/*   Updated: 2023/03/25 01:47:30 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 void	find_median(t_stack *st)
 {

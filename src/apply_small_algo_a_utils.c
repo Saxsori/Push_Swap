@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   apply_small_algo_a_utils.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 12:59:57 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/02/03 13:00:47 by aaljaber         ###   ########.fr       */
+/*   Updated: 2023/03/25 01:47:30 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 void	doo_ra(t_stack *st)
 {

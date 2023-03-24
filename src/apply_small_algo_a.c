@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   apply_small_algo_a.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaljaber <aaljaber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:34:31 by aaljaber          #+#    #+#             */
-/*   Updated: 2022/02/03 12:25:11 by aaljaber         ###   ########.fr       */
+/*   Updated: 2023/03/25 01:47:30 by aaljaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 /*if(st->stack_a[st->top_a - 1] < st->stack_a[0])
 if(st->stack_a[st->top_a] < st->stack_a[0])

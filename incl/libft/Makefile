@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aaljaber <aaljaber@student.42.fr>          +#+  +:+       +#+         #
+#    By: aaljaber <aaljaber@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 12:10:20 by aaljaber          #+#    #+#              #
-#    Updated: 2022/02/03 15:33:41 by aaljaber         ###   ########.fr        #
+#    Updated: 2023/03/25 01:54:37 by aaljaber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ CFLAGS = -Wall -Werror -Wextra -c
 
 RM = rm -f
 
-# .c.o :
-# 	${CC} ${CFLAGS} ${INCS}
-	
+.c.o :
+	${CC} ${CFLAGS} -I ${INCS} -c $< -o ${<:.c=.o}
+
 ${NAME} :   ${OBJS}
-	ar rc ${NAME} ${OBJS} ${INCS}
+	ar rc ${NAME} ${OBJS}
 
 all : ${NAME}
 
@@ -47,4 +47,3 @@ bonus: ${OBJS} ${BONOBJ}
 
 re : fclean all
 
-.PHONY : all .c.o clean fclean re bonus
